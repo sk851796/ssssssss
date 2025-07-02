@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>idigital - Learn Skills, Earn Money</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E40AF',
+                        accent: '#F59E0B',
+                        dark: '#111827',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.15) 0%, transparent 40%);
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .affiliate-step {
+            transition: all 0.3s ease;
+        }
+        
+        .affiliate-step:hover {
+            transform: scale(1.05);
+        }
+        
+        .review-card {
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vskill-logo {
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .vskill-logo::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4F46E5, #10B981);
+            border-radius: 2px;
+        }
+        
+        .animated-bg {
+            animation: gradientAnimation 10s ease infinite;
+            background-size: 200% 200%;
+            background-image: linear-gradient(45deg, #4F46E5, #10B981, #F59E0B, #4F46E5);
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .skill-animation {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-animation::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            100% {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary">
+                        <img src="your-logo.png" alt="VSKILLBHARAT Logo" class="h-10">
+                    </div>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-dark hover:text-primary font-medium">Home</a>
+                    <div class="relative group">
+                        <button class="text-dark hover:text-primary font-medium flex items-center">
+                            Courses <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50 hidden group-hover:block">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Digital Marketing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Web Development</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Data Science</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Graphic Design</a>
+                        </div>
+                    </div>
+                    <a href="#affiliate" class="text-dark hover:text-primary font-medium">Affiliate</a>
+                    <a href="#reviews" class="text-dark hover:text-primary font-medium">Reviews</a>
+                    <a href="#" class="text-dark hover:text-primary font-medium">Contact</a>
+                    <a href="#founder" class="text-dark hover:text-primary font-medium">Founder</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block text-dark hover:text-primary font-medium">Login</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition font-medium">Sign Up</button>
+                    <button class="md:hidden text-dark">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-700 to-blue-900 py-20 md:py-28 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                        Learn High-Income Skills &<br>
+                        <span class="text-yellow-300">Earn ₹50,000+ Monthly</span>
+                    </h1>
+                    <p class="text-lg text-blue-100 mb-8">
+                        India's #1 Skill Development Platform with 1,00,000+ Students.<br>
+                        Get Certified & Start Earning Through Our Affiliate Program.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-white text-blue-600 px-8 py-4 rounded-full hover:bg-gray-100 transition font-bold text-lg shadow-lg">
+                            <i class="fas fa-play-circle mr-2"></i> Watch Demo
+                        </button>
+                        <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full hover:bg-yellow-300 transition font-bold text-lg shadow-lg">
+                            <i class="fas fa-rupee-sign mr-2"></i> Enroll Now
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://randomuser.me/api/portraits/women/2.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-blue-100">Join 10,000+ Students Learning Today</p>
+                            <div class="flex text-yellow-300 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-white ml-1">4.8 (12,345 Reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mt-10 -mr-10 animate-pulse"></div>
+                        <div class="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full -mb-10 -ml-10 animate-pulse"></div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Learning" class="rounded-2xl shadow-xl w-full max-w-md z-10 relative">
+                            <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg z-20 w-48">
+                                <div class="flex items-center">
+                                    <div class="bg-green-100 p-2 rounded-full mr-2">
+                                        <i class="fas fa-chart-line text-green-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">₹2.5 Crore+</p>
+                                        <p class="text-sm text-gray-500">Earned by Affiliates</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Popular <span class="text-primary">Courses</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our most popular courses that are transforming careers across India</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="course-card bg-white rounded-lg overflow-hidden border border-gray-200 shadow-md hover:shadow-xl transition-transform duration-300 hover:-translate-y-2">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Digital Marketing" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            HOT
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gray-200 h-1.5">
+                            <div class="bg-green-500 h-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-dark">Digital Marketing Mastery</h3>
+                            <div class="text-right">
+                                <span class="text-gray-500 line-through text-sm">₹15,999</span>
+                                <span class="block text-green-600 font-bold">₹8,999</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Master SEO, Social Media, Google Ads and more to become a digital marketing expert</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span class="font-medium">4.9</span>
+                                <span class="text-gray-500 ml-1">(1,245)</span>
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-user-graduate mr-1"></i>
+                                5,200+ Students
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-sm text-gray-500 mb-4">
+                            <span><i class="fas fa-video mr-1"></i> 45+ Videos</span>
+                            <span><i class="fas fa-tasks mr-1"></i> 10 Modules</span>
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition font-bold">
+                            <i class="fas fa-shopping-cart mr-2"></i> Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Course Card 2 -->
+                <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
+                            New
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-dark">Full Stack Web Development</h3>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">₹12,999</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Learn HTML, CSS, JavaScript, React, Node.js and MongoDB to build modern web applications</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span class="font-medium">4.8</span>
+                                <span class="text-gray-500 ml-1">(890)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-user-graduate text-gray-500 mr-1"></i>
+                                <span>3,800+ Students</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg transition font-medium">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Course Card 3 -->
+                <div class="course-card bg-white rounded-xl overflow-hidden border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Data Science" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-bold text-dark">Data Science & Analytics</h3>
+                            <span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">₹14,999</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Master Python, Machine Learning, and Data Visualization to become a data scientist</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                <span class="font-medium">4.7</span>
+                                <span class="text-gray-500 ml-1">(720)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-user-graduate text-gray-500 mr-1"></i>
+                                <span>2,500+ Students</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white py-2 rounded-lg transition font-medium">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-white border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg transition font-medium text-lg">
+                    View All Courses
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate Program Section -->
+    <section id="affiliate" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Earn with Our <span class="text-secondary">Affiliate Program</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join our affiliate program and start earning commissions by referring students to our courses</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="affiliate-step bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-user-plus text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Sign Up</h3>
+                    <p class="text-gray-600">Create your free affiliate account and get your unique referral link</p>
+                </div>
+                
+                <div class="affiliate-step bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-share-alt text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Share</h3>
+                    <p class="text-gray-600">Share your referral link with your audience through social media, email, or website</p>
+                </div>
+                
+                <div class="affiliate-step bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                        <i class="fas fa-rupee-sign text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-2">Earn</h3>
+                    <p class="text-gray-600">Earn up to 96%-98% commission for every successful enrollment through your link</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg max-w-4xl mx-auto">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-gradient-to-br from-primary to-secondary p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Affiliate Benefits</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>High commissions up to 96%-98%</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Real-time tracking dashboard</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Monthly payouts via UPI, Bank Transfer</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Marketing materials & resources</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <span>Dedicated affiliate support</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-bold text-dark mb-4">Affiliate Earnings Calculator</h3>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-3 font-medium">Monthly Referrals: <span id="referralValue" class="text-blue-600">20</span></label>
+                            <input type="range" id="referralSlider" min="1" max="100" value="20" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>1</span>
+                                <span>25</span>
+                                <span>50</span>
+                                <span>75</span>
+                                <span>100</span>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2">Average Course Price</label>
+                            <select id="coursePrice" class="w-full border border-gray-300 rounded-lg p-2">
+                                <option value="5000">₹5,000</option>
+                                <option value="10000" selected>₹10,000</option>
+                                <option value="15000">₹15,000</option>
+                                <option value="20000">₹20,000</option>
+                            </select>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-700">Your Estimated Earnings:</span>
+                                <span class="text-xl font-bold text-secondary" id="earningsDisplay">₹0</span>
+                            </div>
+                            <p class="text-sm text-gray-600" id="earningsNote">Based on 0 referrals at 96% commission</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="animated-bg text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:opacity-90 transition">
+                    Become an Affiliate Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Success <span class="text-primary">Stories</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from our students who transformed their careers</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Priya Sharma</h4>
+                            <p class="text-sm text-gray-500">Digital Marketing Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The course helped me start my own digital marketing agency. I'm now earning 1.5L/month!"</p>
+                    <div class="flex text-yellow-400 text-sm">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <!-- Add 2 more testimonials here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">What Our <span class="text-primary">Students</span> Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from thousands of students who transformed their careers with VSKILLBHARAT</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="review-card bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold mr-4">
+                            RK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark">Rajesh Kumar</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "The Digital Marketing course completely changed my career. I went from a 20k job to earning 60k in just 6 months. The affiliate program helped me earn extra income while learning!"
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Digital Marketing Mastery</span>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold mr-4">
+                            PS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark">Priya Sharma</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "As a college student, I was looking for skills to boost my employability. The Full Stack Development course gave me practical skills that helped me land a job at ₹8 LPA right after graduation."
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Full Stack Web Development</span>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent font-bold mr-4">
+                            AM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark">Amit Mishra</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "I've earned over ₹2 lakhs through the affiliate program while learning data science. The instructors are industry experts and the support team is always helpful. Best investment in my career!"
+                    </p>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span>Data Science & Analytics</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-primary/5 p-8 rounded-2xl border border-primary/10">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-2/3 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-dark mb-2">Start Your Learning Journey Today</h3>
+                        <p class="text-gray-600">Join 50,000+ students who transformed their careers with VSKILLBHARAT</p>
+                    </div>
+                    <div class="md:w-1/3 text-center md:text-right">
+                        <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition font-medium">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">Meet Our <span class="text-primary">Founder</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The visionary behind VSKILLBHARAT's mission to empower India through skill development</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden shadow-lg">
+                <div class="md:w-1/3 p-6">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
+                         alt="Founder" 
+                         class="rounded-full w-48 h-48 object-cover mx-auto border-4 border-primary/20">
+                </div>
+                <div class="md:w-2/3 p-8">
+                    <h3 class="text-2xl font-bold text-dark mb-2">Rahul Sharma</h3>
+                    <p class="text-secondary font-medium mb-4">Founder & CEO, VSKILLBHARAT</p>
+                    <p class="text-gray-600 mb-4">
+                        With over 15 years of experience in education technology and skill development, 
+                        Rahul founded VSKILLBHARAT with a vision to bridge the skill gap in India's workforce. 
+                        His mission is to empower 1 million Indians with job-ready skills by 2025.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary hover:text-primary/80">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary hover:text-primary/80">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-primary hover:text-primary/80">
+                            <i class="fas fa-globe text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <img src="your-logo.png" alt="VSKILLBHARAT Logo" class="h-10">
+                    </h3>
+                    <p class="text-gray-300 mb-4">
+                        India's leading platform for skill development and career transformation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="#courses" class="text-gray-300 hover:text-white">Courses</a></li>
+                        <li><a href="#affiliate" class="text-gray-300 hover:text-white">Affiliate Program</a></li>
+                        <li><a href="#reviews" class="text-gray-300 hover:text-white">Reviews</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="#founder" class="text-gray-300 hover:text-white">Founder</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Popular Courses</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Digital Marketing</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Web Development</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Data Science</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Graphic Design</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Mobile App Development</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-300"></i>
+                            <span class="text-gray-300">123 Skill Street, Learning City, India</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-3 text-gray-300"></i>
+                            <span class="text-gray-300">+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-gray-300"></i>
+                            <span class="text-gray-300">support@vskillbharat.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2023 VSKILLBHARAT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/919876543210" target="_blank" class="w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <script>
+        // Simple animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Course card animations
+            const courseCards = document.querySelectorAll('.course-card');
+            courseCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('skill-animation');
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('skill-animation');
+                });
+            });
+            
+            // Affiliate earnings calculator
+            const slider = document.getElementById('referralSlider');
+            const referralValue = document.getElementById('referralValue');
+            const priceSelect = document.getElementById('coursePrice');
+            const earningsDisplay = document.querySelector('.text-secondary');
+            const commission = 0.98; // 98% commission
+            
+            function calculateEarnings() {
+                const referrals = parseInt(slider.value);
+                const coursePrice = parseInt(priceSelect.value);
+                const earnings = referrals * coursePrice * commission;
+                
+                referralValue.textContent = referrals;
+                earningsDisplay.textContent = ₹${earnings.toLocaleString('en-IN')};
+                document.querySelector('.text-sm.text-gray-600').textContent = 
+                    Earn ₹${(coursePrice * commission).toLocaleString('en-IN')} per sale;
+                
+                // Update slider color
+                const percent = (referrals / 100) * 100;
+                slider.style.background = linear-gradient(to right, #4F46E5 0%, #4F46E5 ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%);
+            }
+            
+            slider.addEventListener('input', calculateEarnings);
+            priceSelect.addEventListener('change', calculateEarnings);
+            
+            // Initial calculation
+            calculateEarnings();
+        });
+    </script>
+</body>
+</html>

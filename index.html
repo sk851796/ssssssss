@@ -1,46 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BDG Game - Color Prediction</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <div class="logo">🎮 BDG GAME</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Games</a>
-      <a href="#">Wallet</a>
-      <a href="#">History</a>
-      <a href="#">Logout</a>
-    </nav>
-  </header>
+body {
+  background: #111;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-  <section class="hero">
-    <h1>Welcome to BDG GAME</h1>
-    <p>Predict colors. Win money. Play fair & safe.</p>
-    <a href="#" class="btn">Start Playing</a>
-  </section>
+.container {
+  background: #222;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,100,0.4);
+  width: 90%;
+  max-width: 400px;
+}
 
-  <section class="features">
-    <div class="box">
-      <h3>🔴 Green / Red / Violet</h3>
-      <p>3-minute color prediction game, 24/7 live</p>
-    </div>
-    <div class="box">
-      <h3>💰 Instant Wallet</h3>
-      <p>Add/Withdraw via UPI in minutes</p>
-    </div>
-    <div class="box">
-      <h3>🛡️ Secure & Private</h3>
-      <p>Your data is safe & secure with us</p>
-    </div>
-  </section>
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00ff66;
+}
 
-  <footer>
-    <p>&copy; 2025 BDG GAME. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 6px;
+  background: #333;
+  color: white;
+}
+
+button {
+  padding: 12px;
+  background: #00cc66;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00e673;
+}
+
+p {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+a {
+  color: #00ffcc;
+  text-decoration: none;
+}
